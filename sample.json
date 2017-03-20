@@ -1,0 +1,23 @@
+{
+    "config": {
+        "arrow": {
+            "width": 5,
+            "head": 7
+        },
+        "image": {
+            "file": "conbu_droidconf2016.png",
+            "width": 1008,
+            "height": 1344
+        }
+    },
+    "link": {
+        "link0": {
+            "up":   { "x": 250, "y": 150 },
+            "down": { "x": 400, "y": 100 }
+        },
+        "link1": {
+            "up":   { "x": 300, "y": 200 },
+            "down": { "x": 400, "y": 500 }
+        }
+    }
+}

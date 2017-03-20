@@ -16,4 +16,11 @@ Json configuration file
 See sample.json for sample. For production, place json configuration file as 
 config.json (hardcoaded in JavaScript).
 
+* config part
+  * 'arrow' defines size of arrow: 'width' for total width of body, 'head' for length of head (head with 90 degree open angle will be drawn, width is twice of 'head')
+  * 'image' defines background image: 'file' for file name, 'width' and 'height' for display size
+* link part
+  * each entry is identified by its key
+  * each entry shall have 'up' and 'down' with a pair of 'x' and 'y' for position at image
+  * 'up' is a position of up side of link, 'down' is of down side
 
