@@ -1,7 +1,13 @@
 // Policy:
 //  do not rely on external library, incl jQuery etc.
 
-var defConfig = { arrow : { width : 5, head : 10 }, image : { file: "", width : 0, height : 0 } };
+var defConfig = {
+  arrow : { width : 5, head : 10 },
+  image : { file: "", width : 0, height : 0 },
+  load  : {},
+  na    : "black",
+  unit  : ""
+};
 var defConfigName = 'config.json';
 
 var config;
@@ -25,6 +31,26 @@ function LoadWeathermap() {
     if (json_load.link !== undefined) {link_lines = json_load.link; }
     else {
       console.log("No link defined in config json: " + defConfigName);
+      return;
+    }
+    if (json_conf.load !== undefined) {
+      if (json_conf.load.na !== undefined) {config.na = json_conf.load.na; }
+      if (json_conf.load.max !== undefined) {config.max = json_conf.load.max; }
+      if (json_conf.load.unit !== undefined) {config.unit = json_conf.load.unit; }
+      if (config.max !== undefined) {config.max = config.na; }
+      Object.keys(json_conf.load).sort(function(a,b) {
+        a = parseInt(a);
+        b = parseInt(b);
+        if (a == 0) { return -1; }
+        if (b == 0) { return -1; }
+        if (a > b) { return 1; }
+        if (a < b) {return -1; }
+        return 0;
+      }).forEach(function (name) {
+        if (name > 0) {config.load[name] = json_conf.load[name]; }
+      });
+    } else {
+      console.log("No load level defined in config json: " + defConfigName);
       return;
     }
   } else {
@@ -100,6 +126,14 @@ function LoadWeathermap() {
 
   return;
 };
+
+function GetColor(val) {
+  var rcol = config.max;
+  Object.keys(config.load).some(function (name) {
+    if (val <= parseInt(name)) {rcol = config.load[name]; return true; }
+  });
+  return rcol;
+}
 
 function PathAdd(cur, add) {
   cur.x += add.x;

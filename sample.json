@@ -8,6 +8,19 @@
             "file": "conbu_droidconf2016.png",
             "width": 1008,
             "height": 1344
+        },
+        "load": {
+            "na": "black",
+            "max": "black",
+            "unit": "%",
+            "1": "white",
+            "10": "purple",
+            "25": "blue",
+            "40": "#add8e6",
+            "55": "lime",
+            "70": "yellow",
+            "85": "orange",
+            "100": "red"
         }
     },
     "link": {

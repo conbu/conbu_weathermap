@@ -19,6 +19,9 @@ config.json (hardcoaded in JavaScript).
 * config part
   * 'arrow' defines size of arrow: 'width' for total width of body, 'head' for length of head (head with 90 degree open angle will be drawn, width is twice of 'head')
   * 'image' defines background image: 'file' for file name, 'width' and 'height' for display size
+  * 'load' defines color scheme, "na" (if none applicable) and "unit" (for legend) are required, "max" is optional for values over the maximum threshold with default of "na"
+    * add number with html color key pair for threshold. numbers are considered as max of each span.
+    * 0 to minimum number is the first span with color specified as the minimum nubmer one.
 * link part
   * each entry is identified by its key
   * each entry shall have 'up' and 'down' with a pair of 'x' and 'y' for position at image
