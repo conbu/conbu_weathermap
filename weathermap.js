@@ -3,6 +3,7 @@
 
 var defConfig = {
   arrow : { width : 5, head : 10 },
+  data  : { url : "", interval : 60 },
   image : { file: "", width : 0, height : 0 },
   load  : {},
   na    : "black",
@@ -12,6 +13,7 @@ var defConfigName = 'config.json';
 
 var config;
 var link_lines;
+var arrows;
 
 function LoadWeathermap() {
   // load config
@@ -28,6 +30,12 @@ function LoadWeathermap() {
     if (json_conf.image.file !== undefined) {config.image.file = json_conf.image.file; }
     if (json_conf.image.height !== undefined) {config.image.height = json_conf.image.height; }
     if (json_conf.image.width !== undefined) {config.image.width = json_conf.image.width; }
+    if (json_conf.data.url !== undefined) {config.data.url = json_conf.data.url; }
+    if (json_conf.data.interval !== undefined) {
+      if (json_conf.data.interval > 0) {
+        config.data.interval = json_conf.data.interval;
+      }
+    }
     if (json_load.link !== undefined) {link_lines = json_load.link; }
     else {
       console.log("No link defined in config json: " + defConfigName);
@@ -72,6 +80,7 @@ function LoadWeathermap() {
   elem_img.setAttributeNS('http://www.w3.org/1999/xlink', 'href', config.image.file);
   svg_root.appendChild(elem_img);
 
+  arrows = {};
   Object.keys(link_lines).forEach(function (name) {
     clink = link_lines[name];
     // pos calc
@@ -102,6 +111,7 @@ function LoadWeathermap() {
     elem_p.setAttribute('id', name + '-down');
     elem_p.setAttribute('class', 'wm-cls0');
     svg_root.appendChild(elem_p);
+    arrows[name + '-down'] = {};
     // up (from down end to mid)
     var elem_p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     var elem_cur = clink.down;
@@ -122,11 +132,49 @@ function LoadWeathermap() {
     elem_p.setAttribute('id', name + '-up');
     elem_p.setAttribute('class', 'wm-cls0');
     svg_root.appendChild(elem_p);
+    arrows[name + '-up'] = {};
   });
 
+  if (config.data.url != '') {LoadDataInConfig(); }
   return;
 };
 
+function LoadDataInConfig() {
+  var httpReq = new XMLHttpRequest();
+  var json_data;
+  console.log('LoadDataInConfig called');
+  httpReq.open('GET', config.data.url, false);
+  httpReq.send();
+  if (httpReq.status === 200) {
+    json_data = JSON.parse(httpReq.responseText);
+    SetLoadData(json_data);
+  } else {
+    console.log('LoadDataInConfig load failed. End data acquisition loop.');
+    return false;
+  }
+
+  if (config.data.url != '') {
+    window.setTimeout(LoadDataInConfig, config.data.interval * 1000);
+  }
+}
+
+// load this function for renewing data
+// ld is in format of 'sample-data.json'
+function SetLoadData(ld) {
+  var dat_arrows = {};
+  Object.keys(arrows).forEach(function (name) {
+    dat_arrows[name] = {};
+    if (ld[name] !== undefined) {
+      dat_arrows[name]['value'] = ld[name];
+      dat_arrows[name]['color'] = GetColor(ld[name]);
+    } else {
+      dat_arrows[name]['value'] = 'na';
+      dat_arrows[name]['color'] = config.na;
+    }
+    document.getElementById(name).setAttribute('fill', dat_arrows[name]['color']);
+  });
+  // for history, keep dat_arrows instead of ld, into IndexedDB
+}
 function GetColor(val) {
   var rcol = config.max;
   Object.keys(config.load).some(function (name) {

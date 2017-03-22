@@ -4,6 +4,10 @@
             "width": 5,
             "head": 7
         },
+        "data": {
+            "url": "sample-data.json",
+            "interval": 60
+        },
         "image": {
             "file": "conbu_droidconf2016.png",
             "width": 1008,
