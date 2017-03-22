@@ -4,12 +4,15 @@
 var defConfig = {
   arrow : { width : 5, head : 10 },
   data  : { url : "", interval : 60 },
-  image : { file: "", width : 0, height : 0 },
+  image : { file: "", width : 0, height : 0,
+    legend : { x: 20, y: 20, font: 10, r: 5, sep: 0.3, width: 3 }
+  },
   load  : {},
   na    : "black",
   unit  : ""
 };
 var defConfigName = 'config.json';
+var defSVG = 'http://www.w3.org/2000/svg';
 
 var config;
 var link_lines;
@@ -21,6 +24,7 @@ function LoadWeathermap() {
   var httpReq = new XMLHttpRequest();
   httpReq.open('GET', defConfigName, false);
   httpReq.send();
+  var num_load;
   if (httpReq.status === 200) {
     json_load = JSON.parse(httpReq.responseText);
     config = defConfig;
@@ -30,6 +34,12 @@ function LoadWeathermap() {
     if (json_conf.image.file !== undefined) {config.image.file = json_conf.image.file; }
     if (json_conf.image.height !== undefined) {config.image.height = json_conf.image.height; }
     if (json_conf.image.width !== undefined) {config.image.width = json_conf.image.width; }
+    if (json_conf.image.legend !== undefined) {
+      var jc_legend = json_conf.image.legend;
+      if ((jc_legend.x !== undefined) && (jc_legend.x > 0)) {config.image.legend.x = jc_legend.x; }
+      if ((jc_legend.y !== undefined) && (jc_legend.y > 0)) {config.image.legend.y = jc_legend.y; }
+      if ((jc_legend.font !== undefined) && (jc_legend.font > 0)) {config.image.legend.font = jc_legend.font; }
+    }
     if (json_conf.data.url !== undefined) {config.data.url = json_conf.data.url; }
     if (json_conf.data.interval !== undefined) {
       if (json_conf.data.interval > 0) {
@@ -46,6 +56,7 @@ function LoadWeathermap() {
       if (json_conf.load.max !== undefined) {config.max = json_conf.load.max; }
       if (json_conf.load.unit !== undefined) {config.unit = json_conf.load.unit; }
       if (config.max !== undefined) {config.max = config.na; }
+      num_load = 3; // na, max + title, margin
       Object.keys(json_conf.load).sort(function(a,b) {
         a = parseInt(a);
         b = parseInt(b);
@@ -55,7 +66,7 @@ function LoadWeathermap() {
         if (a < b) {return -1; }
         return 0;
       }).forEach(function (name) {
-        if (name > 0) {config.load[name] = json_conf.load[name]; }
+        if (name > 0) {config.load[name] = json_conf.load[name]; num_load += 1; }
       });
     } else {
       console.log("No load level defined in config json: " + defConfigName);
@@ -72,13 +83,45 @@ function LoadWeathermap() {
   svg_root.setAttribute("width", config.image.width);
   svg_root.setAttribute("height", config.image.height);
   svg_root.setAttribute("viewBox", "0 0 " + config.image.width + " " + config.image.height);
-  var elem_img = document.createElementNS('http://www.w3.org/2000/svg','image');
+  var elem_img = document.createElementNS(defSVG,'image');
   elem_img.setAttribute("x", 0);
   elem_img.setAttribute("y", 0);
   elem_img.setAttribute("height", config.image.height);
   elem_img.setAttribute("width", config.image.width);
   elem_img.setAttributeNS('http://www.w3.org/1999/xlink', 'href', config.image.file);
   svg_root.appendChild(elem_img);
+
+  var obj_il = config.image.legend;
+  var elem_leg = document.createElementNS(defSVG, 'rect');
+  elem_leg.setAttribute('x', obj_il.x);
+  elem_leg.setAttribute('y', obj_il.y);
+  elem_leg.setAttribute('rx', obj_il.r);
+  elem_leg.setAttribute('ry', obj_il.r);
+  elem_leg.setAttribute('width', obj_il.r * 2 + obj_il.font * 13);
+  elem_leg.setAttribute('height', obj_il.r * 3 + obj_il.font * (num_load * (1.0 + obj_il.sep)));
+  elem_leg.setAttribute('fill', 'white');
+  elem_leg.setAttribute('stroke', 'black');
+  elem_leg.setAttribute('stroke-width', 1);
+  svg_root.appendChild(elem_leg);
+  var elem_leg_title = document.createElementNS(defSVG, 'text');
+  elem_leg_title.setAttribute('x', obj_il.x + obj_il.r);
+  elem_leg_title.setAttribute('y', obj_il.y + obj_il.r + obj_il.font);
+  elem_leg_title.textContent = 'Traffic load (' + config.unit + ')';
+  elem_leg_title.setAttribute('font-size', obj_il.font + 'px');
+  svg_root.appendChild(elem_leg_title);
+  // na
+  var cid = 1;
+  SetLegend(svg_root, obj_il, cid, config.na, 'n/a');
+  // foreach
+  var val_priv = 0;
+  Object.keys(config.load).forEach(function (name) {
+    cid += 1;
+    SetLegend(svg_root, obj_il, cid, GetColor(name), val_priv + ' - ' + name);
+    val_priv = name;
+  });
+  // max
+  cid += 1;
+  SetLegend(svg_root, obj_il, cid, config.max, 'Above');
 
   arrows = {};
   Object.keys(link_lines).forEach(function (name) {
@@ -92,7 +135,7 @@ function LoadWeathermap() {
     var len_hd = config.arrow.head;
 
     // down (from up end to mid)
-    var elem_p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    var elem_p = document.createElementNS(defSVG, 'path');
     var elem_cur = clink.up;
     var elem_str = PathStr('M', elem_cur);
     elem_str += PathStr('L', PathAdd(elem_cur, PathAppVec(cvec, len_hw, 1)));
@@ -113,7 +156,7 @@ function LoadWeathermap() {
     svg_root.appendChild(elem_p);
     arrows[name + '-down'] = {};
     // up (from down end to mid)
-    var elem_p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    var elem_p = document.createElementNS(defSVG, 'path');
     var elem_cur = clink.down;
     var elem_str = PathStr('M', elem_cur);
     elem_str += PathStr('L', PathAdd(elem_cur, PathAppVec(cvec, len_hw, 1)));
@@ -137,6 +180,23 @@ function LoadWeathermap() {
 
   if (config.data.url != '') {LoadDataInConfig(); }
   return;
+};
+function SetLegend(root, conf, id, color, text) {
+  var elem_o_box = document.createElementNS(defSVG, 'rect');
+  elem_o_box.setAttribute('x', conf.x + conf.r * 2);
+  elem_o_box.setAttribute('y', conf.y + conf.font * id * (1.0 + conf.sep) + conf.r * 2);
+  elem_o_box.setAttribute('width', conf.font * conf.width);
+  elem_o_box.setAttribute('height', conf.font);
+  elem_o_box.setAttribute('stroke', 'black');
+  elem_o_box.setAttribute('stroke-width', 1);
+  elem_o_box.setAttribute('fill', color);
+  root.appendChild(elem_o_box);
+  var elem_o_txt = document.createElementNS(defSVG, 'text');
+  elem_o_txt.setAttribute('x', conf.x + conf.r * 2 + conf.font * (conf.width + 1));
+  elem_o_txt.setAttribute('y', conf.y + conf.r * 2 + conf.font * (id * (1.0 + conf.sep) + 1));
+  elem_o_txt.textContent = text;
+  elem_o_txt.setAttribute('font-size', conf.font + 'px');
+  root.appendChild(elem_o_txt);
 };
 
 function LoadDataInConfig() {
