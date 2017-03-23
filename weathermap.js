@@ -5,7 +5,8 @@ var defConfig = {
   arrow : { width : 5, head : 10 },
   data  : { url : "", interval : 60 },
   image : { file: "", width : 0, height : 0,
-    legend : { x: 20, y: 20, font: 10, r: 5, sep: 0.3, width: 3 }
+    legend : { x: 20, y: 20, font: 10, r: 5, sep: 0.3, 
+               bar_width: 3, legend_width: 10 }
   },
   load  : {},
   na    : "black",
@@ -97,7 +98,7 @@ function LoadWeathermap() {
   elem_leg.setAttribute('y', obj_il.y);
   elem_leg.setAttribute('rx', obj_il.r);
   elem_leg.setAttribute('ry', obj_il.r);
-  elem_leg.setAttribute('width', obj_il.r * 2 + obj_il.font * 13);
+  elem_leg.setAttribute('width', obj_il.r * 2 + obj_il.font * obj_il.legend_width);
   elem_leg.setAttribute('height', obj_il.r * 3 + obj_il.font * (num_load * (1.0 + obj_il.sep)));
   elem_leg.setAttribute('fill', 'white');
   elem_leg.setAttribute('stroke', 'black');
@@ -121,7 +122,7 @@ function LoadWeathermap() {
   });
   // max
   cid += 1;
-  SetLegend(svg_root, obj_il, cid, config.max, 'Above');
+  SetLegend(svg_root, obj_il, cid, config.max, '> ' + val_priv);
 
   arrows = {};
   Object.keys(link_lines).forEach(function (name) {
@@ -185,14 +186,14 @@ function SetLegend(root, conf, id, color, text) {
   var elem_o_box = document.createElementNS(defSVG, 'rect');
   elem_o_box.setAttribute('x', conf.x + conf.r * 2);
   elem_o_box.setAttribute('y', conf.y + conf.font * id * (1.0 + conf.sep) + conf.r * 2);
-  elem_o_box.setAttribute('width', conf.font * conf.width);
+  elem_o_box.setAttribute('width', conf.font * conf.bar_width);
   elem_o_box.setAttribute('height', conf.font);
   elem_o_box.setAttribute('stroke', 'black');
   elem_o_box.setAttribute('stroke-width', 1);
   elem_o_box.setAttribute('fill', color);
   root.appendChild(elem_o_box);
   var elem_o_txt = document.createElementNS(defSVG, 'text');
-  elem_o_txt.setAttribute('x', conf.x + conf.r * 2 + conf.font * (conf.width + 1));
+  elem_o_txt.setAttribute('x', conf.x + conf.r * 2 + conf.font * (conf.bar_width + 1));
   elem_o_txt.setAttribute('y', conf.y + conf.r * 2 + conf.font * (id * (1.0 + conf.sep) + 1));
   elem_o_txt.textContent = text;
   elem_o_txt.setAttribute('font-size', conf.font + 'px');
