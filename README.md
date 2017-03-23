@@ -26,5 +26,18 @@ config.json (hardcoaded in JavaScript).
 * link part
   * each entry is identified by its key
   * each entry shall have 'up' and 'down' with a pair of 'x' and 'y' for position at image
+    * if 'name' is defined for each ('up' or 'down') its value will be used for an identifier (key) to get value from JSON data
   * 'up' is a position of up side of link, 'down' is of down side
+
+Json data file and periodic data update
+---------------------------------------
+
+This script will try to read Json data file from specified URL in config 
+part (config.data.url), if nothing defined as its value just do nothing.
+For each point of data file acquisition, display will be updated by 
+configuration and continues to operate. 
+Once error occurs on periodic data upadte, such as 404 return from server 
+or invalid JSON data, periodical operation will stop. 
+
+Also, user script can call 'SetLoadData' function with one hash to update. 
 

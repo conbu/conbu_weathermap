@@ -14,6 +14,7 @@ var defConfig = {
 };
 var defConfigName = 'config.json';
 var defSVG = 'http://www.w3.org/2000/svg';
+var defXlink = 'http://www.w3.org/1999/xlink';
 
 var config;
 var link_lines;
@@ -89,7 +90,7 @@ function LoadWeathermap() {
   elem_img.setAttribute("y", 0);
   elem_img.setAttribute("height", config.image.height);
   elem_img.setAttribute("width", config.image.width);
-  elem_img.setAttributeNS('http://www.w3.org/1999/xlink', 'href', config.image.file);
+  elem_img.setAttributeNS(defXlink, 'href', config.image.file);
   svg_root.appendChild(elem_img);
 
   var obj_il = config.image.legend;
@@ -154,8 +155,16 @@ function LoadWeathermap() {
     elem_p.setAttribute('stroke-width', 1);
     elem_p.setAttribute('id', name + '-down');
     elem_p.setAttribute('class', 'wm-cls0');
+    var elem_pt = document.createElementNS(defSVG, 'title');
+    elem_pt.setAttribute('id', name + '-down-tip');
+    elem_p.appendChild(elem_pt);
     svg_root.appendChild(elem_p);
     arrows[name + '-down'] = {};
+    if (clink.down.name !== undefined) {
+      arrows[name + '-down']['name'] = clink.down.name;
+    } else {
+      arrows[name + '-down']['name'] = name + '-down';
+    }
     // up (from down end to mid)
     var elem_p = document.createElementNS(defSVG, 'path');
     var elem_cur = clink.down;
@@ -175,8 +184,16 @@ function LoadWeathermap() {
     elem_p.setAttribute('stroke-width', 1);
     elem_p.setAttribute('id', name + '-up');
     elem_p.setAttribute('class', 'wm-cls0');
+    var elem_pt = document.createElementNS(defSVG, 'title');
+    elem_pt.setAttribute('id', name + '-up-tip');
+    elem_p.appendChild(elem_pt);
     svg_root.appendChild(elem_p);
     arrows[name + '-up'] = {};
+    if (clink.up.name !== undefined) {
+      arrows[name + '-up']['name'] = clink.up.name;
+    } else {
+      arrows[name + '-up']['name'] = name + '-up';
+    }
   });
 
   if (config.data.url != '') {LoadDataInConfig(); }
@@ -223,16 +240,18 @@ function LoadDataInConfig() {
 // ld is in format of 'sample-data.json'
 function SetLoadData(ld) {
   var dat_arrows = {};
-  Object.keys(arrows).forEach(function (name) {
-    dat_arrows[name] = {};
+  Object.keys(arrows).forEach(function (dispid) {
+    var name = arrows[dispid]['name'];
+    dat_arrows[dispid] = {};
     if (ld[name] !== undefined) {
-      dat_arrows[name]['value'] = ld[name];
-      dat_arrows[name]['color'] = GetColor(ld[name]);
+      dat_arrows[dispid]['value'] = ld[name];
+      dat_arrows[dispid]['color'] = GetColor(ld[name]);
     } else {
-      dat_arrows[name]['value'] = 'na';
-      dat_arrows[name]['color'] = config.na;
+      dat_arrows[dispid]['value'] = 'na';
+      dat_arrows[dispid]['color'] = config.na;
     }
-    document.getElementById(name).setAttribute('fill', dat_arrows[name]['color']);
+    document.getElementById(dispid).setAttribute('fill', dat_arrows[dispid]['color']);
+    document.getElementById(dispid + '-tip').innerHTML = dispid + ': ' + dat_arrows[dispid]['value'] + ' ' + config.unit;
   });
   // for history, keep dat_arrows instead of ld, into IndexedDB
 }
