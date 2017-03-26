@@ -4,8 +4,8 @@
 var defConfig = {
   arrow : { width : 5, head : 10 },
   data  : { url : "", interval : 60 },
-  image : { file: "", width : 0, height : 0,
-    legend : { x: 20, y: 20, font: 10, r: 5, sep: 0.3, 
+  image : { file: "", width : 0, height : 0, locale: undefined, font: 10,
+    legend : { x: 20, y: 20, r: 5, sep: 0.3, 
                bar_width: 3, legend_width: 10 }
   },
   load  : {},
@@ -36,11 +36,12 @@ function LoadWeathermap() {
     if (json_conf.image.file !== undefined) {config.image.file = json_conf.image.file; }
     if (json_conf.image.height !== undefined) {config.image.height = json_conf.image.height; }
     if (json_conf.image.width !== undefined) {config.image.width = json_conf.image.width; }
+    if (json_conf.image.locale !== undefined) {config.image.locale = json_conf.image.locale; }
+    if (json_conf.image.font !== undefined) {config.image.font = json_conf.image.font; }
     if (json_conf.image.legend !== undefined) {
       var jc_legend = json_conf.image.legend;
       if ((jc_legend.x !== undefined) && (jc_legend.x > 0)) {config.image.legend.x = jc_legend.x; }
       if ((jc_legend.y !== undefined) && (jc_legend.y > 0)) {config.image.legend.y = jc_legend.y; }
-      if ((jc_legend.font !== undefined) && (jc_legend.font > 0)) {config.image.legend.font = jc_legend.font; }
     }
     if (json_conf.data.url !== undefined) {config.data.url = json_conf.data.url; }
     if (json_conf.data.interval !== undefined) {
@@ -92,6 +93,12 @@ function LoadWeathermap() {
   elem_img.setAttribute("width", config.image.width);
   elem_img.setAttributeNS(defXlink, 'href', config.image.file);
   svg_root.appendChild(elem_img);
+  var elem_lastup = document.createElementNS(defSVG, 'text');
+  elem_lastup.setAttribute("x", 5);
+  elem_lastup.setAttribute("y", 5 + config.image.font);
+  elem_lastup.setAttribute("font-size", config.image.font);
+  elem_lastup.setAttribute("id", 'lastupdated');
+  svg_root.appendChild(elem_lastup);
 
   var obj_il = config.image.legend;
   var elem_leg = document.createElementNS(defSVG, 'rect');
@@ -99,31 +106,31 @@ function LoadWeathermap() {
   elem_leg.setAttribute('y', obj_il.y);
   elem_leg.setAttribute('rx', obj_il.r);
   elem_leg.setAttribute('ry', obj_il.r);
-  elem_leg.setAttribute('width', obj_il.r * 2 + obj_il.font * obj_il.legend_width);
-  elem_leg.setAttribute('height', obj_il.r * 3 + obj_il.font * (num_load * (1.0 + obj_il.sep)));
+  elem_leg.setAttribute('width', obj_il.r * 2 + config.image.font * obj_il.legend_width);
+  elem_leg.setAttribute('height', obj_il.r * 3 + config.image.font * (num_load * (1.0 + obj_il.sep)));
   elem_leg.setAttribute('fill', 'white');
   elem_leg.setAttribute('stroke', 'black');
   elem_leg.setAttribute('stroke-width', 1);
   svg_root.appendChild(elem_leg);
   var elem_leg_title = document.createElementNS(defSVG, 'text');
   elem_leg_title.setAttribute('x', obj_il.x + obj_il.r);
-  elem_leg_title.setAttribute('y', obj_il.y + obj_il.r + obj_il.font);
+  elem_leg_title.setAttribute('y', obj_il.y + obj_il.r + config.image.font);
   elem_leg_title.textContent = 'Traffic load (' + config.unit + ')';
-  elem_leg_title.setAttribute('font-size', obj_il.font + 'px');
+  elem_leg_title.setAttribute('font-size', config.image.font + 'px');
   svg_root.appendChild(elem_leg_title);
   // na
   var cid = 1;
-  SetLegend(svg_root, obj_il, cid, config.na, 'n/a');
+  SetLegend(svg_root, obj_il, config.image.font, cid, config.na, 'n/a');
   // foreach
   var val_priv = 0;
   Object.keys(config.load).forEach(function (name) {
     cid += 1;
-    SetLegend(svg_root, obj_il, cid, GetColor(name), val_priv + ' - ' + name);
+    SetLegend(svg_root, obj_il, config.image.font, cid, GetColor(name), val_priv + ' - ' + name);
     val_priv = name;
   });
   // max
   cid += 1;
-  SetLegend(svg_root, obj_il, cid, config.max, '> ' + val_priv);
+  SetLegend(svg_root, obj_il, config.image.font, cid, config.max, '> ' + val_priv);
 
   arrows = {};
   Object.keys(link_lines).forEach(function (name) {
@@ -199,21 +206,21 @@ function LoadWeathermap() {
   if (config.data.url != '') {LoadDataInConfig(); }
   return;
 };
-function SetLegend(root, conf, id, color, text) {
+function SetLegend(root, conf, font, id, color, text) {
   var elem_o_box = document.createElementNS(defSVG, 'rect');
   elem_o_box.setAttribute('x', conf.x + conf.r * 2);
-  elem_o_box.setAttribute('y', conf.y + conf.font * id * (1.0 + conf.sep) + conf.r * 2);
-  elem_o_box.setAttribute('width', conf.font * conf.bar_width);
-  elem_o_box.setAttribute('height', conf.font);
+  elem_o_box.setAttribute('y', conf.y + font * id * (1.0 + conf.sep) + conf.r * 2);
+  elem_o_box.setAttribute('width', font * conf.bar_width);
+  elem_o_box.setAttribute('height', font);
   elem_o_box.setAttribute('stroke', 'black');
   elem_o_box.setAttribute('stroke-width', 1);
   elem_o_box.setAttribute('fill', color);
   root.appendChild(elem_o_box);
   var elem_o_txt = document.createElementNS(defSVG, 'text');
-  elem_o_txt.setAttribute('x', conf.x + conf.r * 2 + conf.font * (conf.bar_width + 1));
-  elem_o_txt.setAttribute('y', conf.y + conf.r * 2 + conf.font * (id * (1.0 + conf.sep) + 1));
+  elem_o_txt.setAttribute('x', conf.x + conf.r * 2 + font * (conf.bar_width + 1));
+  elem_o_txt.setAttribute('y', conf.y + conf.r * 2 + font * (id * (1.0 + conf.sep) + 1));
   elem_o_txt.textContent = text;
-  elem_o_txt.setAttribute('font-size', conf.font + 'px');
+  elem_o_txt.setAttribute('font-size', font + 'px');
   root.appendChild(elem_o_txt);
 };
 
@@ -238,7 +245,7 @@ function LoadDataInConfig() {
 
 // load this function for renewing data
 // ld is in format of 'sample-data.json'
-function SetLoadData(ld) {
+function SetLoadData(ld, update) {
   var dat_arrows = {};
   Object.keys(arrows).forEach(function (dispid) {
     var name = arrows[dispid]['name'];
@@ -253,6 +260,10 @@ function SetLoadData(ld) {
     document.getElementById(dispid).setAttribute('fill', dat_arrows[dispid]['color']);
     document.getElementById(dispid + '-tip').innerHTML = dispid + ': ' + dat_arrows[dispid]['value'] + ' ' + config.unit;
   });
+  var date;
+  if (update !== undefined) {date = new Date(update); }
+  else {date = new Date(); }
+  document.getElementById('lastupdated').innerHTML = 'Last updated: ' + date.toLocaleString(config.image.locale);
   // for history, keep dat_arrows instead of ld, into IndexedDB
 }
 function GetColor(val) {
