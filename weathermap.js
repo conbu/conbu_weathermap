@@ -89,6 +89,10 @@ function LoadWeathermap() {
 
   // constract arrows
   var svg_root = document.getElementById('weathermap');
+  if (svg_root === undefined) {
+    console.log("weathermap SVG element not found.");
+    return;
+  }
   svg_root.setAttribute("width", config.image.width);
   svg_root.setAttribute("height", config.image.height);
   svg_root.setAttribute("viewBox", "0 0 " + config.image.width + " " + config.image.height);
