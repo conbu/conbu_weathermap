@@ -26,6 +26,7 @@ config.json (hardcoaded in JavaScript).
     * 'width' and 'height' for display size
     * 'font' for font size in SVG
     * 'legend' for top-left of legend window by x and y
+    * 'lastupdated' for top-left of last updated string by x and y
     * 'locale' for locale of display (e.g. date format of last updated, user agent default if null)
   * 'load' defines color scheme
     * "na" (if none applicable) and "unit" (for legend) are required

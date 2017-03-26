@@ -6,7 +6,8 @@ var defConfig = {
   data  : { url : "", interval : 60 },
   image : { file: "", width : 0, height : 0, locale: undefined, font: 10,
     legend : { x: 20, y: 20, r: 5, sep: 0.3, 
-               bar_width: 3, legend_width: 10 }
+               bar_width: 3, legend_width: 10 },
+    lastupdated: { x: 5, y: 5 }
   },
   load  : {},
   na    : "black",
@@ -42,6 +43,11 @@ function LoadWeathermap() {
       var jc_legend = json_conf.image.legend;
       if ((jc_legend.x !== undefined) && (jc_legend.x > 0)) {config.image.legend.x = jc_legend.x; }
       if ((jc_legend.y !== undefined) && (jc_legend.y > 0)) {config.image.legend.y = jc_legend.y; }
+    }
+    if (json_conf.image.lastupdated !== undefined) {
+      var jc_lu = json_conf.image.lastupdated;
+      if ((jc_lu.x !== undefined) && (jc_lu.x > 0)) {config.image.lastupdated.x = jc_lu.x; }
+      if ((jc_lu.y !== undefined) && (jc_lu.y > 0)) {config.image.lastupdated.y = jc_lu.y; }
     }
     if (json_conf.data.url !== undefined) {config.data.url = json_conf.data.url; }
     if (json_conf.data.interval !== undefined) {
@@ -94,8 +100,8 @@ function LoadWeathermap() {
   elem_img.setAttributeNS(defXlink, 'href', config.image.file);
   svg_root.appendChild(elem_img);
   var elem_lastup = document.createElementNS(defSVG, 'text');
-  elem_lastup.setAttribute("x", 5);
-  elem_lastup.setAttribute("y", 5 + config.image.font);
+  elem_lastup.setAttribute("x", config.image.lastupdated.x);
+  elem_lastup.setAttribute("y", config.image.lastupdated.y + config.image.font);
   elem_lastup.setAttribute("font-size", config.image.font);
   elem_lastup.setAttribute("id", 'lastupdated');
   svg_root.appendChild(elem_lastup);

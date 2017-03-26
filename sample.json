@@ -12,7 +12,8 @@
             "file": "conbu_droidconf2016.png",
             "width": 1008,
             "height": 1344,
-            "legend" : { "x": 20, "y": 20 }
+            "legend" : { "x": 20, "y": 20 },
+            "lastupdated": { "x": 5, "y": 5 }
         },
         "load": {
             "na": "black",
