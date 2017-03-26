@@ -17,10 +17,19 @@ See sample.json for sample. For production, place json configuration file as
 config.json (hardcoaded in JavaScript).
 
 * config part
-  * 'arrow' defines size of arrow: 'width' for total width of body, 'head' for length of head (head with 90 degree open angle will be drawn, width is twice of 'head')
+  * 'arrow' defines size of arrow
+    * 'width' for total width of body
+    * 'head' for length of head (head with 90 degree open angle will be drawn, width is twice of 'head')
   * 'data' defines remote data acquisition handling: if 'url' is specified, acquire remote data from 'url' (default '' - no read) with interval of 'interval' seconds (default 60 seconds).
-  * 'image' defines background image: 'file' for file name, 'width' and 'height' for display size, 'font' for font size in SVG, 'legend' for top-left of legend window, and 'locale' for locale of display (e.g. date format of last updated, user agent default if null)
-  * 'load' defines color scheme, "na" (if none applicable) and "unit" (for legend) are required, "max" is optional for values over the maximum threshold with default of "na"
+  * 'image' defines background image
+    * 'file' for file name
+    * 'width' and 'height' for display size
+    * 'font' for font size in SVG
+    * 'legend' for top-left of legend window by x and y
+    * 'locale' for locale of display (e.g. date format of last updated, user agent default if null)
+  * 'load' defines color scheme
+    * "na" (if none applicable) and "unit" (for legend) are required
+    * "max" is optional for values over the maximum threshold with default of "na"
     * add number with html color key pair for threshold. numbers are considered as max of each span.
     * 0 to minimum number is the first span with color specified as the minimum nubmer one.
 * link part
