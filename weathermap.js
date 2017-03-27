@@ -114,12 +114,13 @@ function LoadWeathermap() {
   }
   console.log("Configuration loaded successfully: " + defConfigName);
 
-  // constract arrows
+  // constract weathermap display
   var svg_root = document.getElementById('weathermap');
   if (svg_root === undefined) {
     console.log("weathermap SVG element not found.");
     return;
   }
+  // weathermap size and background (will not change size of "wmhistory")
   svg_root.setAttribute("width", config.image.width);
   svg_root.setAttribute("height", config.image.height);
   svg_root.setAttribute("viewBox", "0 0 " + config.image.width + " " + config.image.height);
@@ -137,6 +138,7 @@ function LoadWeathermap() {
   elem_lastup.setAttribute("id", 'lastupdated');
   svg_root.appendChild(elem_lastup);
 
+  // weathermap legend
   var obj_il = config.image.legend;
   var elem_leg = document.createElementNS(defSVG, 'rect');
   elem_leg.setAttribute('x', obj_il.x);
@@ -169,6 +171,7 @@ function LoadWeathermap() {
   cid += 1;
   SetLegend(svg_root, obj_il, config.image.font, cid, config.max, '> ' + val_priv);
 
+  // weathermap arrows
   arrows = {};
   Object.keys(link_lines).forEach(function (name) {
     clink = link_lines[name];
@@ -240,8 +243,14 @@ function LoadWeathermap() {
     }
   });
 
+  // start execution
+  // set msec as 0 for saving length to localstorage
   curExecTime = new Date();
-  if (config.data.url != '') {LoadDataInConfig(); }
+  curExecTime.setMilliseconds(0);
+  curExecTime.setSeconds(curExecTime.getSeconds() + 1);
+  if (config.data.url != '') {
+    window.setTimeout(LoadDataInConfig, curExecTime - Date.now());
+  }
   return;
 };
 function SetLegend(root, conf, font, id, color, text) {
@@ -310,19 +319,19 @@ function SetLoadData(ld, update) {
   // window.localStorage.removeItem(config.target.name);
   if (window.localStorage[config.target.name] !== undefined) {
     savedData = JSON.parse(window.localStorage[config.target.name]);
-    savedData[date.getTime()] = dat_arrows;
+    savedData[Math.floor(date.getTime() / 1000)] = dat_arrows;
     // sort can work that date number is quite large without length changed
     if ((config.target.maxsave !== undefined) && (config.target.maxsave > 0)) {
       var deltarget = new Date();
       deltarget.setDate(deltarget.getDate() - config.target.maxsave);
-      deltarget = deltarget.getTime();
+      deltarget = Math.floor(deltarget.getTime() / 1000);
       Object.keys(savedData).sort().forEach(function (name) {
         if (name < deltarget) {delete savedData[name]; }
       });
     }
   } else {
     savedData = {};
-    savedData[date.getTime()] = dat_arrows;
+    savedData[Math.floor(date.getTime() / 1000)] = dat_arrows;
   }
   window.localStorage[config.target.name] = JSON.stringify(savedData);
 }
