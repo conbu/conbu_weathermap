@@ -32,31 +32,54 @@ function LoadWeathermap() {
   var num_load;
   if (httpReq.status === 200) {
     json_load = JSON.parse(httpReq.responseText);
+    if (json_load === undefined) {return false; }
     config = defConfig;
     var json_conf = json_load.config;
-    if (json_conf.arrow.width !== undefined) {config.arrow.width = json_conf.arrow.width; }
-    if (json_conf.arrow.head !== undefined) {config.arrow.head = json_conf.arrow.head; }
-    if (json_conf.target.name !== undefined) {config.target.name = json_conf.target.name; }
-    if (json_conf.target.maxsave !== undefined) {config.target.maxsave = json_conf.target.maxsave; }
-    if (json_conf.image.file !== undefined) {config.image.file = json_conf.image.file; }
-    if (json_conf.image.height !== undefined) {config.image.height = json_conf.image.height; }
-    if (json_conf.image.width !== undefined) {config.image.width = json_conf.image.width; }
-    if (json_conf.image.locale !== undefined) {config.image.locale = json_conf.image.locale; }
-    if (json_conf.image.font !== undefined) {config.image.font = json_conf.image.font; }
-    if (json_conf.image.legend !== undefined) {
-      var jc_legend = json_conf.image.legend;
-      if ((jc_legend.x !== undefined) && (jc_legend.x > 0)) {config.image.legend.x = jc_legend.x; }
-      if ((jc_legend.y !== undefined) && (jc_legend.y > 0)) {config.image.legend.y = jc_legend.y; }
+    if (json_conf.arrow !== undefined) {
+      if (json_conf.arrow.width !== undefined)
+        {config.arrow.width = json_conf.arrow.width; }
+      if (json_conf.arrow.head !== undefined)
+        {config.arrow.head = json_conf.arrow.head; }
     }
-    if (json_conf.image.lastupdated !== undefined) {
-      var jc_lu = json_conf.image.lastupdated;
-      if ((jc_lu.x !== undefined) && (jc_lu.x > 0)) {config.image.lastupdated.x = jc_lu.x; }
-      if ((jc_lu.y !== undefined) && (jc_lu.y > 0)) {config.image.lastupdated.y = jc_lu.y; }
+    if (json_conf.target !== undefined) {
+      if (json_conf.target.name !== undefined)
+        {config.target.name = json_conf.target.name; }
+      if (json_conf.target.maxsave !== undefined)
+        {config.target.maxsave = json_conf.target.maxsave; }
     }
-    if (json_conf.data.url !== undefined) {config.data.url = json_conf.data.url; }
-    if (json_conf.data.interval !== undefined) {
-      if (json_conf.data.interval > 0) {
-        config.data.interval = json_conf.data.interval;
+    if (json_conf.image !== undefined) {
+      if (json_conf.image.file !== undefined)
+        {config.image.file = json_conf.image.file; }
+      if (json_conf.image.height !== undefined)
+        {config.image.height = json_conf.image.height; }
+      if (json_conf.image.width !== undefined)
+        {config.image.width = json_conf.image.width; }
+      if (json_conf.image.locale !== undefined)
+        {config.image.locale = json_conf.image.locale; }
+      if (json_conf.image.font !== undefined)
+        {config.image.font = json_conf.image.font; }
+      if (json_conf.image.legend !== undefined) {
+        var jc_legend = json_conf.image.legend;
+        if ((jc_legend.x !== undefined) && (jc_legend.x > 0))
+          {config.image.legend.x = jc_legend.x; }
+        if ((jc_legend.y !== undefined) && (jc_legend.y > 0))
+          {config.image.legend.y = jc_legend.y; }
+      }
+      if (json_conf.image.lastupdated !== undefined) {
+        var jc_lu = json_conf.image.lastupdated;
+        if ((jc_lu.x !== undefined) && (jc_lu.x > 0))
+          {config.image.lastupdated.x = jc_lu.x; }
+        if ((jc_lu.y !== undefined) && (jc_lu.y > 0))
+          {config.image.lastupdated.y = jc_lu.y; }
+      }
+    }
+    if (json_conf.data !== undefined) {
+      if (json_conf.data.url !== undefined)
+        {config.data.url = json_conf.data.url; }
+      if (json_conf.data.interval !== undefined) {
+        if (json_conf.data.interval > 0) {
+          config.data.interval = json_conf.data.interval;
+        }
       }
     }
     if (json_load.link !== undefined) {link_lines = json_load.link; }
