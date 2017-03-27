@@ -20,6 +20,9 @@ config.json (hardcoaded in JavaScript).
   * 'arrow' defines size of arrow
     * 'width' for total width of body
     * 'head' for length of head (head with 90 degree open angle will be drawn, width is twice of 'head')
+  * 'target' defines target network information of weathermap
+    * 'name' for name of target
+    * 'maxsave' for day(s) to store information in LocalStorage, data will be keied with 'target.name'
   * 'data' defines remote data acquisition handling: if 'url' is specified, acquire remote data from 'url' (default '' - no read) with interval of 'interval' seconds (default 60 seconds).
   * 'image' defines background image
     * 'file' for file name

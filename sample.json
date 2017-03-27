@@ -1,5 +1,9 @@
 {
     "config": {
+        "target": {
+            "name": "DroidKaigi 2016",
+            "maxsave": 2
+        },
         "arrow": {
             "width": 5,
             "head": 7

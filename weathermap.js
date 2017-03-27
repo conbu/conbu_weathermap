@@ -9,6 +9,7 @@ var defConfig = {
                bar_width: 3, legend_width: 10 },
     lastupdated: { x: 5, y: 5 }
   },
+  target: { name: "", maxsave: undefined },
   load  : {},
   na    : "black",
   unit  : ""
@@ -35,6 +36,8 @@ function LoadWeathermap() {
     var json_conf = json_load.config;
     if (json_conf.arrow.width !== undefined) {config.arrow.width = json_conf.arrow.width; }
     if (json_conf.arrow.head !== undefined) {config.arrow.head = json_conf.arrow.head; }
+    if (json_conf.target.name !== undefined) {config.target.name = json_conf.target.name; }
+    if (json_conf.target.maxsave !== undefined) {config.target.maxsave = json_conf.target.maxsave; }
     if (json_conf.image.file !== undefined) {config.image.file = json_conf.image.file; }
     if (json_conf.image.height !== undefined) {config.image.height = json_conf.image.height; }
     if (json_conf.image.width !== undefined) {config.image.width = json_conf.image.width; }
@@ -244,7 +247,7 @@ function LoadDataInConfig() {
   httpReq.send();
   if (httpReq.status === 200) {
     json_data = JSON.parse(httpReq.responseText);
-    SetLoadData(json_data);
+    SetLoadData(json_data, curExecTime);
   } else {
     console.log('LoadDataInConfig load failed. End data acquisition loop.');
     return false;
@@ -278,6 +281,27 @@ function SetLoadData(ld, update) {
   else {date = new Date(); }
   document.getElementById('lastupdated').innerHTML = 'Last updated: ' + date.toLocaleString(config.image.locale);
   // for history, keep dat_arrows instead of ld, into IndexedDB
+  var savedData;
+  // debug use, uncomment this line to remove
+  // XXX: need to have some code to do this from config
+  // window.localStorage.removeItem(config.target.name);
+  if (window.localStorage[config.target.name] !== undefined) {
+    savedData = JSON.parse(window.localStorage[config.target.name]);
+    savedData[date.getTime()] = dat_arrows;
+    // sort can work that date number is quite large without length changed
+    if ((config.target.maxsave !== undefined) && (config.target.maxsave > 0)) {
+      var deltarget = new Date();
+      deltarget.setDate(deltarget.getDate() - config.target.maxsave);
+      deltarget = deltarget.getTime();
+      Object.keys(savedData).sort().forEach(function (name) {
+        if (name < deltarget) {delete savedData[name]; }
+      });
+    }
+  } else {
+    savedData = {};
+    savedData[date.getTime()] = dat_arrows;
+  }
+  window.localStorage[config.target.name] = JSON.stringify(savedData);
 }
 function GetColor(val) {
   var rcol = config.max;
