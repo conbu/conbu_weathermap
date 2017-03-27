@@ -36,6 +36,8 @@ config.json (hardcoaded in JavaScript).
     * "max" is optional for values over the maximum threshold with default of "na"
     * add number with html color key pair for threshold. numbers are considered as max of each span.
     * 0 to minimum number is the first span with color specified as the minimum nubmer one.
+  * 'history' defines array of color scheme used in history graph
+    * just an array but not hash. default to list in weathermap.js
 * link part
   * each entry is identified by its key
   * each entry shall have 'up' and 'down' with a pair of 'x' and 'y' for position at image

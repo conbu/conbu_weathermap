@@ -11,17 +11,26 @@ var defConfig = {
   },
   target: { name: "", maxsave: undefined },
   load  : {},
+  load_max: 0,
   na    : "black",
-  unit  : ""
+  unit  : "",
+  history: []
 };
 var defConfigName = 'config.json';
 var defSVG = 'http://www.w3.org/2000/svg';
 var defXlink = 'http://www.w3.org/1999/xlink';
+// has 26 color definitions (13 links) for history graph
+// set color with array of config.history to change
+var defHColor = [ "black", "blue", "lime", "red", "cyan", "yellow", "magenta",
+  "navy", "green", "maroon", "teal", "purple", "olive", "gray", 
+  "deepskyblue", "rosybrown", "darkslategray", "tan", "darkviolet", "plum",
+  "sienna", "orangered", "brown", "gold", "greenyellow", "deeppink" ];
 
 var config;
 var link_lines;
 var arrows;
 var curExecTime;
+var hist_color;
 
 function LoadWeathermap() {
   // load config
@@ -42,8 +51,10 @@ function LoadWeathermap() {
         {config.arrow.head = json_conf.arrow.head; }
     }
     if (json_conf.target !== undefined) {
-      if (json_conf.target.name !== undefined)
-        {config.target.name = json_conf.target.name; }
+      if (json_conf.target.name !== undefined) {
+        config.target.name = json_conf.target.name;
+        // XXX: change html title, also
+      }
       if (json_conf.target.maxsave !== undefined)
         {config.target.maxsave = json_conf.target.maxsave; }
     }
@@ -108,6 +119,11 @@ function LoadWeathermap() {
       console.log("No load level defined in config json: " + defConfigName);
       return;
     }
+    if (json_conf.history !== undefined) {
+      config.history = json_conf.history;
+    } else {
+      config.history = defHColor;
+    }
   } else {
     console.log("Error to load configuration: " + defConfigName);
     return;
@@ -169,7 +185,8 @@ function LoadWeathermap() {
   });
   // max
   cid += 1;
-  SetLegend(svg_root, obj_il, config.image.font, cid, config.max, '> ' + val_priv);
+  config.load_max = val_priv;
+  SetLegend(svg_root, obj_il, config.image.font, cid, config.max, '> ' + config.load_max);
 
   // weathermap arrows
   arrows = {};
@@ -241,6 +258,39 @@ function LoadWeathermap() {
     } else {
       arrows[name + '-up']['name'] = name + '-up';
     }
+  });
+
+  // constract weathermap history
+  var svg_hist = document.getElementById('wmhistory');
+  if (svg_hist === undefined) {
+    console.log("weathermap history SVG element not found.");
+    return;
+  }
+  // reset style to default (800,300)
+  svg_hist.setAttribute("width", 800);
+  svg_hist.setAttribute("height", 300);
+  svg_hist.setAttribute("viewBox", "0 0 800 300");
+  // reset style to defined in config.json
+  document.getElementById("history_max").setAttribute("font-size", config.image.font + "px");
+  document.getElementById("history_max").textContent = config.load_max;
+  document.getElementById("history_min").setAttribute("font-size", config.image.font + "px");
+  document.getElementById("history_unit").setAttribute("font-size", config.image.font + "px");
+  document.getElementById("history_unit").textContent = config.unit;
+  document.getElementById("history_start").setAttribute("font-size", config.image.font + "px");
+  document.getElementById("history_end").setAttribute("font-size", config.image.font + "px");
+  // legends
+  var cid = 0;
+  hist_color = {};
+  Object.keys(arrows).forEach(function (dispid) {
+    hist_color[dispid] = defHColor[cid];
+    cid += 1;
+    var elem_hleg = document.createElementNS(defSVG, 'text');
+    elem_hleg.setAttribute("x", 710);
+    elem_hleg.setAttribute("y", config.image.font * (1.0 + config.image.legend.sep) * cid);
+    elem_hleg.textContent = dispid;
+    elem_hleg.setAttribute("font-size", config.image.font + "px");
+    elem_hleg.setAttribute("fill", hist_color[dispid]);
+    svg_hist.appendChild(elem_hleg);
   });
 
   // start execution
