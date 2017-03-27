@@ -20,6 +20,7 @@ var defXlink = 'http://www.w3.org/1999/xlink';
 var config;
 var link_lines;
 var arrows;
+var curExecTime;
 
 function LoadWeathermap() {
   // load config
@@ -213,6 +214,7 @@ function LoadWeathermap() {
     }
   });
 
+  curExecTime = new Date();
   if (config.data.url != '') {LoadDataInConfig(); }
   return;
 };
@@ -237,7 +239,7 @@ function SetLegend(root, conf, font, id, color, text) {
 function LoadDataInConfig() {
   var httpReq = new XMLHttpRequest();
   var json_data;
-  console.log('LoadDataInConfig called');
+  console.log('LoadDataInConfig called: ' + Date.now());
   httpReq.open('GET', config.data.url, false);
   httpReq.send();
   if (httpReq.status === 200) {
@@ -248,8 +250,9 @@ function LoadDataInConfig() {
     return false;
   }
 
+  curExecTime.setSeconds(curExecTime.getSeconds() + config.data.interval);
   if (config.data.url != '') {
-    window.setTimeout(LoadDataInConfig, config.data.interval * 1000);
+    window.setTimeout(LoadDataInConfig, curExecTime - Date.now());
   }
 }
 
