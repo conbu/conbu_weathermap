@@ -56,3 +56,11 @@ or invalid JSON data, periodical operation will stop.
 
 Also, user script can call 'SetLoadData' function with one hash to update. 
 
+Graph SVG
+---------
+
+You can modify default SVG definitions in index.html, but also change defConfig 
+hash for graph_history part. xorig, xwidth, yorig, ywidth is defined for 
+origin point of x (value), width of x (normally negative), and both for y 
+(time). 
+

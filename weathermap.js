@@ -14,7 +14,8 @@ var defConfig = {
   load_max: 0,
   na    : "black",
   unit  : "",
-  history: []
+  history: [],
+  graph_history: { xorig: 260, xwidth: -250, yorig: 50, ywidth: 650 }
 };
 var defConfigName = 'config.json';
 var defSVG = 'http://www.w3.org/2000/svg';
