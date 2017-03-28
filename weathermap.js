@@ -54,7 +54,11 @@ function LoadWeathermap() {
     if (json_conf.target !== undefined) {
       if (json_conf.target.name !== undefined) {
         config.target.name = json_conf.target.name;
-        // XXX: change html title, also
+        var re = /\{EVENTNAME\}/;
+        if (document.title.match(re)) {
+          var tstr = document.title;
+          document.title = tstr.replace(re, config.target.name);
+        }
       }
       if (json_conf.target.maxsave !== undefined)
         {config.target.maxsave = json_conf.target.maxsave; }
