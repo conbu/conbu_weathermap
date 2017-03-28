@@ -2,5 +2,7 @@
     "value-link0-up": 40,
     "link0-down": 20,
     "link1-up": 80,
-    "link1-down": 5
+    "link1-down": 5,
+    "link2-up": 35,
+    "link2-down": 62
 }

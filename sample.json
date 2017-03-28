@@ -13,11 +13,11 @@
             "interval": 60
         },
         "image": {
-            "file": "conbu_droidconf2016.png",
+            "file": "conbu_elixirconf2017.png",
             "width": 1008,
             "height": 1344,
-            "legend" : { "x": 20, "y": 20 },
-            "lastupdated": { "x": 5, "y": 5 }
+            "legend" : { "x": 275, "y": 125 },
+            "lastupdated": { "x": 275, "y": 110 }
         },
         "load": {
             "na": "black",
@@ -35,12 +35,16 @@
     },
     "link": {
         "link0": {
-            "up":   { "x": 250, "y": 150, "name": "value-link0-up" },
-            "down": { "x": 400, "y": 100 }
+            "up":   { "x": 506, "y": 490, "name": "value-link0-up" },
+            "down": { "x": 506, "y": 625 }
         },
         "link1": {
-            "up":   { "x": 300, "y": 200 },
-            "down": { "x": 400, "y": 500 }
+            "up":   { "x": 507, "y": 655 },
+            "down": { "x": 507, "y": 710 }
+        },
+        "link2": {
+            "up":   { "x": 509, "y": 745 },
+            "down": { "x": 509, "y": 900 }
         }
     }
 }
