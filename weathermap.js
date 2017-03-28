@@ -15,7 +15,7 @@ var defConfig = {
   na    : "black",
   unit  : "",
   history: [],
-  graph_history: { xorig: 260, xwidth: -250, yorig: 50, ywidth: 650 }
+  graph_history: { xorig: 50, xwidth: 650, yorig: 260, ywidth: -250 }
 };
 var defConfigName = 'config.json';
 var defSVG = 'http://www.w3.org/2000/svg';
@@ -137,7 +137,7 @@ function LoadWeathermap() {
 
   // constract weathermap display
   var svg_root = document.getElementById('weathermap');
-  if (svg_root === undefined) {
+  if (svg_root == undefined) {
     console.log("weathermap SVG element not found.");
     return;
   }
@@ -267,7 +267,7 @@ function LoadWeathermap() {
 
   // constract weathermap history
   var svg_hist = document.getElementById('wmhistory');
-  if (svg_hist === undefined) {
+  if (svg_hist == undefined) {
     console.log("weathermap history SVG element not found.");
     return;
   }
@@ -389,6 +389,7 @@ function SetLoadData(ld, update) {
     savedData[Math.floor(date.getTime() / 1000)] = dat_arrows;
   }
   window.localStorage[config.target.name] = JSON.stringify(savedData);
+  UpdateHistoryGraph();
 }
 function GetColor(val) {
   var rcol = config.max;
@@ -434,4 +435,65 @@ function PathLen(p0, p1) {
 function PathStr(str, pos) {
   return str + ' ' + pos.x + ' ' + pos.y + ' ';
 };
+
+function UpdateHistoryGraph() {
+  var keys_arrows = Object.keys(arrows);
+  var p_strs = {};
+  var sdata;
+
+  if (window.localStorage[config.target.name] !== undefined)
+    {sdata = JSON.parse(window.localStorage[config.target.name]); }
+  else {return false; }
+  var keys_history = Object.keys(sdata).sort();
+
+  // init
+  if (keys_history.length <= 1) {return false; }
+  var hstart = keys_history[0];
+  var hend = keys_history[keys_history.length - 1];
+  var hxunit = config.graph_history.xwidth / (hend - hstart);
+  var hyunit = config.graph_history.ywidth / config.load_max;
+  var hxorig = config.graph_history.xorig;
+  var hyorig = config.graph_history.yorig;
+  var td = new Date(hstart * 1000);
+  document.getElementById("history_start").innerHTML = td.toLocaleString(config.image.locale);
+  var td = new Date(hend * 1000);
+  document.getElementById("history_end").innerHTML = td.toLocaleString(config.image.locale);
+  keys_arrows.forEach(function (id) {
+    p_strs[id] = "M" + hxorig + ",";
+    if (sdata[hstart][id] !== undefined) {
+      p_strs[id] += (hyorig + Math.floor(hyunit * sdata[hstart][id].value * 100) / 100);
+    } else {
+      p_strs[id] += hyorig;
+    }
+    p_strs[id] += " ";
+  });
+
+  // create strings
+  for (var hid = 1; hid < keys_history.length; hid++) {
+    var cx = hxorig + Math.floor(hxunit * (keys_history[hid] - hstart) * 100) / 100;
+    keys_arrows.forEach(function (aid) {
+      if (sdata[keys_history[hid]][aid] !== undefined) {
+        p_strs[aid] += "L" + cx + ",";
+        p_strs[aid] += (hyorig + Math.floor(hyunit * sdata[keys_history[hid]][aid].value * 100) / 100);
+      }
+    });
+  }
+
+  // append to svg
+  var svg_hist = document.getElementById('wmhistory');
+  Object.keys(p_strs).forEach(function (id) {
+    if (document.getElementById("history_graph_line_" + id) != undefined) {
+      document.getElementById("history_graph_line_" + id).setAttribute("d", p_strs[id]);
+    } else {
+      var elem_path = document.createElementNS(defSVG, 'path');
+      elem_path.setAttribute("fill", "none");
+      elem_path.setAttribute("d", p_strs[id]);
+      elem_path.setAttribute("stroke", hist_color[id]);
+      elem_path.setAttribute("stroke-width", 1);
+      elem_path.setAttribute("id", "history_graph_line_" + id);
+      svg_hist.appendChild(elem_path);
+    }
+  });
+  return true;
+}
 
