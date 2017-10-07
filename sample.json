@@ -20,6 +20,7 @@
             "lastupdated": { "x": 275, "y": 110 }
         },
         "load": {
+            "conv": 1,
             "na": "black",
             "max": "black",
             "unit": "%",

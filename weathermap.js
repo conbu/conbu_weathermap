@@ -32,6 +32,7 @@ var link_lines;
 var arrows;
 var curExecTime;
 var hist_color;
+var disp_conv = 1.0;
 
 function LoadWeathermap() {
   // load config
@@ -120,6 +121,7 @@ function LoadWeathermap() {
       }).forEach(function (name) {
         if (name > 0) {config.load[name] = json_conf.load[name]; num_load += 1; }
       });
+      if (json_conf.load.conv !== undefined) {disp_conv = json_conf.load.conv; }
     } else {
       console.log("No load level defined in config json: " + defConfigName);
       return;
@@ -339,7 +341,7 @@ function LoadDataInConfig() {
   if (httpReq.status === 200) {
     json_data = JSON.parse(httpReq.responseText);
     if (! (! lastData)) {
-      diff_time = Date.now() - lastExecTime;
+      diff_time = (Date.now() - lastExecTime) * disp_conv;
       diff_data = {};
       for (var item in json_data) {
         if (lastData[item]) {

@@ -36,6 +36,7 @@ config.json (hardcoaded in JavaScript).
     * "max" is optional for values over the maximum threshold with default of "na"
     * add number with html color key pair for threshold. numbers are considered as max of each span.
     * 0 to minimum number is the first span with color specified as the minimum nubmer one.
+    * "conv" is a conversion rate from raw data to display data, like bps to Mbps (set to 1000000.0)
   * 'history' defines array of color scheme used in history graph
     * just an array but not hash. default to list in weathermap.js
 * link part
@@ -53,6 +54,8 @@ For each point of data file acquisition, display will be updated by
 configuration and continues to operate. 
 Once error occurs on periodic data upadte, such as 404 return from server 
 or invalid JSON data, periodical operation will stop. 
+Data from specified URL are taken as raw read value (cumulative) but not 
+network bandwidth like in bps.
 
 Also, user script can call 'SetLoadData' function with one hash to update. 
 
