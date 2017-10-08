@@ -10,7 +10,7 @@
         },
         "data": {
             "url": "sample-data.json",
-            "interval": 60
+            "interval": 15
         },
         "image": {
             "file": "PHP_Conference2017_e_v1.0.png",
