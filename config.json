@@ -144,8 +144,8 @@
             "down": { "x": 600, "y": 770, "name": "SW1-1-FastEthernet0\/1-Outgoing" }
         },
         "sw42-41": {
-            "up":   { "x": 445, "y": 435, "name": "SW4-1-FastEthernet0\/23-Incoming" },
-            "down": { "x": 165, "y": 435, "name": "SW4-1-FastEthernet0\/23-Outgoing" }
+            "up":   { "x": 445, "y": 435, "name": "SW4-1-GigabitEthernet0\/2-Incoming" },
+            "down": { "x": 165, "y": 435, "name": "SW4-1-GigabitEthernet0\/2-Outgoing" }
         },
         "sw22-21": {
             "up":   { "x": 485, "y": 660, "name": "SW2-1-FastEthernet0\/22-Incoming" },
