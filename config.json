@@ -48,16 +48,16 @@
             "down": { "x": 555, "y": 315, "name": "IX03_4F-1-FastEthernet0\/1-Outgoing" }
         },
         "ap406": {
-            "up":   { "x": 145, "y": 420, "name": "SW4-2-FastEthernet0\/1-Incoming" },
-            "down": { "x":  95, "y": 390, "name": "SW4-2-FastEthernet0\/1-Outgoing" }
+            "up":   { "x": 145, "y": 420, "name": "SW4-2-GigabitEther 0\/1 (AP)-Incoming" },
+            "down": { "x":  95, "y": 390, "name": "SW4-2-GigabitEther 0\/1 (AP)-Outgoing" }
         },
         "ap405": {
-            "up":   { "x": 145, "y": 420, "name": "SW4-2-FastEthernet0\/5-Incoming" },
-            "down": { "x": 145, "y": 380, "name": "SW4-2-FastEthernet0\/5-Outgoing" }
+            "up":   { "x": 145, "y": 420, "name": "SW4-2-GigabitEther 0\/5 (AP)-Incoming" },
+            "down": { "x": 145, "y": 380, "name": "SW4-2-GigabitEther 0\/5 (AP)-Outgoing" }
         },
         "ap404": {
-            "up":   { "x": 145, "y": 420, "name": "SW4-2-FastEthernet0\/3-Incoming" },
-            "down": { "x": 205, "y": 390, "name": "SW4-2-FastEthernet0\/3-Outgoing" }
+            "up":   { "x": 145, "y": 420, "name": "SW4-2-GigabitEther 0\/3 (AP)-Incoming" },
+            "down": { "x": 205, "y": 390, "name": "SW4-2-GigabitEther 0\/3 (AP)-Outgoing" }
         },
         "ap403": {
             "up":   { "x": 465, "y": 420, "name": "SW4-1-FastEthernet0\/4-Incoming" },
