@@ -338,7 +338,11 @@ function LoadDataInConfig() {
   httpReq.send();
   if (httpReq.status === 200) {
     json_data = JSON.parse(httpReq.responseText);
-    SetLoadData(json_data['traffics'], curExecTime);
+    var cur_data = {};
+    for (var item in json_data['traffics']) {
+      cur_data[item] = json_data['traffics'][item] / disp_conv;
+    }
+    SetLoadData(cur_data, curExecTime);
   } else {
     console.log('LoadDataInConfig load failed. End data acquisition loop.');
     return false;
