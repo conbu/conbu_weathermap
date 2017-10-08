@@ -44,8 +44,8 @@
             "down": { "x": 435, "y": 225, "name": "" }
         },
         "ap408": {
-            "up":   { "x": 595, "y": 315, "name": "" },
-            "down": { "x": 555, "y": 315, "name": "" }
+            "up":   { "x": 595, "y": 315, "name": "IX03-4F-1-FastEthernet1/0-Incoming" },
+            "down": { "x": 555, "y": 315, "name": "IX03-4F-1-FastEthernet1/0-Outgoing" }
         },
         "ap406": {
             "up":   { "x": 145, "y": 420, "name": "" },
@@ -172,28 +172,28 @@
             "down": { "x": 485, "y": 435, "name": "" }
         },
         "sw11": {
-            "up":   { "x": 555, "y": 820, "name": "" },
-            "down": { "x": 525, "y": 820, "name": "" }
+            "up":   { "x": 555, "y": 820, "name": "IX01_1F-GigaEthernet1-Incoming" },
+            "down": { "x": 525, "y": 820, "name": "IX01_1F-GigaEthernet1-Outgoing" }
         },
         "vpn05": {
-            "up":   { "x": 785, "y": 140, "name": "pfsense_6F-2-vtnet0-Outgoing" },
-            "down": { "x": 550, "y": 140, "name": "pfsense_6F-2-vtnet0-Incoming" }
+            "up":   { "x": 785, "y": 140, "name": "pfsense_6F-2-vtnet0-Incoming" },
+            "down": { "x": 550, "y": 140, "name": "pfsense_6F-2-vtnet0-Outgoing" }
         },
         "vpn04": {
-            "up":   { "x": 785, "y": 225, "name": "pfsense_6F-1-vtnet0-Outgoing" },
-            "down": { "x": 550, "y": 225, "name": "pfsense_6F-1-vtnet0-Incoming" }
+            "up":   { "x": 785, "y": 225, "name": "pfsense_6F-1-vtnet0-Incoming" },
+            "down": { "x": 550, "y": 225, "name": "pfsense_6F-1-vtnet0-Outgoing" }
         },
         "vpn03": {
-            "up":   { "x": 785, "y": 315, "name": "pfsense_4F_washitu-vtnet0-Outgoing" },
-            "down": { "x": 630, "y": 315, "name": "pfsense_4F_washitu-vtnet0-Incoming" }
+            "up":   { "x": 785, "y": 315, "name": "pfsense_4F_washitu-vtnet0-Incoming" },
+            "down": { "x": 630, "y": 315, "name": "pfsense_4F_washitu-vtnet0-Outgoing" }
         },
         "vpn02": {
-            "up":   { "x": 785, "y": 435, "name": "pfsense_4F_conbe-vtnet0-Outgoing" },
-            "down": { "x": 555, "y": 435, "name": "pfsense_4F_conbe-vtnet0-Incoming" }
+            "up":   { "x": 785, "y": 435, "name": "pfsense_4F_conbe-vtnet0-Incoming" },
+            "down": { "x": 555, "y": 435, "name": "pfsense_4F_conbe-vtnet0-Outgoing" }
         },
         "vpn01": {
-            "up":   { "x": 785, "y": 820, "name": "pfsense_1F2F3F-vtnet0-Outgoing" },
-            "down": { "x": 585, "y": 820, "name": "pfsense_1F2F3F-vtnet0-Incoming" }
+            "up":   { "x": 785, "y": 820, "name": "pfsense_1F2F3F-vtnet0-Incoming" },
+            "down": { "x": 585, "y": 820, "name": "pfsense_1F2F3F-vtnet0-Outgoing" }
         }
     }
 }
