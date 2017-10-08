@@ -144,28 +144,28 @@
             "down": { "x": 600, "y": 770, "name": "" }
         },
         "sw42-41": {
-            "up":   { "x": 445, "y": 435, "name": "" },
-            "down": { "x": 165, "y": 435, "name": "" }
+            "up":   { "x": 445, "y": 435, "name": "SW4-1-FastEthernet0/23-Incoming" },
+            "down": { "x": 165, "y": 435, "name": "SW4-1-FastEthernet0/23-Outgoing" }
         },
         "sw22-21": {
-            "up":   { "x": 485, "y": 660, "name": "" },
-            "down": { "x": 305, "y": 660, "name": "" }
+            "up":   { "x": 485, "y": 660, "name": "SW2-1-FastEthernet0/22-Incoming" },
+            "down": { "x": 305, "y": 660, "name": "SW2-1-FastEthernet0/22-Outgoing" }
         },
         "sw31-11": {
-            "up":   { "x": 505, "y": 805, "name": "" },
-            "down": { "x": 610, "y": 540, "name": "" }
+            "up":   { "x": 505, "y": 805, "name": "SW1-1-FastEthernet0/21-Incoming" },
+            "down": { "x": 610, "y": 540, "name": "SW1-1-FastEthernet0/21-Outgoing" }
         },
         "sw21-11": {
-            "up":   { "x": 505, "y": 805, "name": "" },
-            "down": { "x": 505, "y": 680, "name": "" }
+            "up":   { "x": 505, "y": 805, "name": "SW1-1-FastEthernet0/22-Incoming" },
+            "down": { "x": 505, "y": 680, "name": "SW1-1-FastEthernet0/22-Outgoing" }
         },
         "sw13-11": {
-            "up":   { "x": 480, "y": 820, "name": "" },
-            "down": { "x": 200, "y": 815, "name": "" }
+            "up":   { "x": 480, "y": 820, "name": "SW1-1-FastEthernet0/23-Incoming" },
+            "down": { "x": 200, "y": 815, "name": "SW1-1-FastEthernet0/23-Outgoing" }
         },
         "sw12-11": {
-            "up":   { "x": 480, "y": 820, "name": "" },
-            "down": { "x": 380, "y": 785, "name": "" }
+            "up":   { "x": 480, "y": 820, "name": "SW1-1-FastEthernet0/24-Incoming" },
+            "down": { "x": 380, "y": 785, "name": "SW1-1-FastEthernet0/24-Outgoing" }
         },
         "sw41": {
             "up":   { "x": 520, "y": 435, "name": "IX02_4F-2-GigaEthernet1-Incoming" },
