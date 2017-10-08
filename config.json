@@ -148,24 +148,24 @@
             "down": { "x": 165, "y": 435, "name": "SW4-1-GigabitEthernet0\/2-Outgoing" }
         },
         "sw22-21": {
-            "up":   { "x": 485, "y": 660, "name": "SW2-1-FastEthernet0\/22-Incoming" },
-            "down": { "x": 305, "y": 660, "name": "SW2-1-FastEthernet0\/22-Outgoing" }
+            "up":   { "x": 485, "y": 660, "name": "SW2-1-FastEthernet0\/23-Incoming" },
+            "down": { "x": 305, "y": 660, "name": "SW2-1-FastEthernet0\/23-Outgoing" }
         },
         "sw31-11": {
-            "up":   { "x": 505, "y": 805, "name": "SW1-1-FastEthernet0\/21-Incoming" },
-            "down": { "x": 610, "y": 540, "name": "SW1-1-FastEthernet0\/21-Outgoing" }
+            "up":   { "x": 505, "y": 805, "name": "SW1-1-FastEthernet0\/26-Incoming" },
+            "down": { "x": 610, "y": 540, "name": "SW1-1-FastEthernet0\/26-Outgoing" }
         },
         "sw21-11": {
-            "up":   { "x": 505, "y": 805, "name": "SW1-1-FastEthernet0\/22-Incoming" },
-            "down": { "x": 505, "y": 680, "name": "SW1-1-FastEthernet0\/22-Outgoing" }
+            "up":   { "x": 505, "y": 805, "name": "SW1-1-FastEthernet0\/25-Incoming" },
+            "down": { "x": 505, "y": 680, "name": "SW1-1-FastEthernet0\/25-Outgoing" }
         },
         "sw13-11": {
-            "up":   { "x": 480, "y": 820, "name": "SW1-1-FastEthernet0\/23-Incoming" },
-            "down": { "x": 200, "y": 815, "name": "SW1-1-FastEthernet0\/23-Outgoing" }
+            "up":   { "x": 480, "y": 820, "name": "SW1-1-FastEthernet0\/24-Incoming" },
+            "down": { "x": 200, "y": 815, "name": "SW1-1-FastEthernet0\/24-Outgoing" }
         },
         "sw12-11": {
-            "up":   { "x": 480, "y": 820, "name": "SW1-1-FastEthernet0\/24-Incoming" },
-            "down": { "x": 380, "y": 785, "name": "SW1-1-FastEthernet0\/24-Outgoing" }
+            "up":   { "x": 480, "y": 820, "name": "SW1-1-FastEthernet0\/23-Incoming" },
+            "down": { "x": 380, "y": 785, "name": "SW1-1-FastEthernet0\/23-Outgoing" }
         },
         "sw41": {
             "up":   { "x": 520, "y": 435, "name": "IX02_4F-2-GigaEthernet1-Incoming" },
