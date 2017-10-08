@@ -343,9 +343,9 @@ function LoadDataInConfig() {
     if (! (! lastData)) {
       diff_time = (Date.now() - lastExecTime) * disp_conv;
       diff_data = {};
-      for (var item in json_data) {
+      for (var item in json_data['traffics']) {
         if (lastData[item]) {
-          diff_data[item] = (json_data[item] - lastData[item]) / diff_time;
+          diff_data[item] = (json_data['traffics'][item] - lastData[item]) / diff_time;
         }
       }
       SetLoadData(diff_data, curExecTime);
