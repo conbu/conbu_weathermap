@@ -9,7 +9,7 @@
             "head": 7
         },
         "data": {
-            "url": "sample-data.json",
+            "url": "http://api.conbu.net/v1/traffics/all/all/both",
             "interval": 15
         },
         "image": {
