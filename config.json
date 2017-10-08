@@ -113,7 +113,7 @@
         },
         "ap110": {
             "up":   { "x": 340, "y": 785, "name": "SW1-2-FastEthernet0\/1-Incoming" },
-            "down": { "x": 280, "y": 790, "name": "SW1-2-FastEthernet-\/1-Outgoing" }
+            "down": { "x": 280, "y": 790, "name": "SW1-2-FastEthernet0\/1-Outgoing" }
         },
         "ap108": {
             "up":   { "x": 340, "y": 785, "name": "SW1-2-FastEthernet0\/3-Incoming" },
