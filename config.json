@@ -36,16 +36,16 @@
     },
     "link": {
         "ap601": {
-            "up":   { "x": 515, "y": 140, "name": "" },
-            "down": { "x": 435, "y": 140, "name": "" }
+            "up":   { "x": 515, "y": 140, "name": "IX05_6F-2_D-FastEthernet1/0-Incoming" },
+            "down": { "x": 435, "y": 140, "name": "IX05_6F-2_D-FastEthernet1/0-Outgoing" }
         },
         "ap602": {
-            "up":   { "x": 515, "y": 225, "name": "" },
-            "down": { "x": 435, "y": 225, "name": "" }
+            "up":   { "x": 515, "y": 225, "name": "IX04_6F-1_C-FastEthernet1/0-Incoming" },
+            "down": { "x": 435, "y": 225, "name": "IX04_6F-1_C-FastEthernet1/0-Outgoing" }
         },
         "ap408": {
-            "up":   { "x": 595, "y": 315, "name": "IX03-4F-1-FastEthernet1/0-Incoming" },
-            "down": { "x": 555, "y": 315, "name": "IX03-4F-1-FastEthernet1/0-Outgoing" }
+            "up":   { "x": 595, "y": 315, "name": "IX03_4F-1-FastEthernet1/0-Incoming" },
+            "down": { "x": 555, "y": 315, "name": "IX03_4F-1-FastEthernet1/0-Outgoing" }
         },
         "ap406": {
             "up":   { "x": 145, "y": 420, "name": "" },
@@ -168,8 +168,8 @@
             "down": { "x": 380, "y": 785, "name": "" }
         },
         "sw41": {
-            "up":   { "x": 520, "y": 435, "name": "" },
-            "down": { "x": 485, "y": 435, "name": "" }
+            "up":   { "x": 520, "y": 435, "name": "IX02_4F-2-GigaEthernet1-Incoming" },
+            "down": { "x": 485, "y": 435, "name": "IX02_4F-2-GigaEthernet1-Outgoing" }
         },
         "sw11": {
             "up":   { "x": 555, "y": 820, "name": "IX01_1F-GigaEthernet1-Incoming" },
