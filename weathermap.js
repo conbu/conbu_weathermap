@@ -328,8 +328,6 @@ function SetLegend(root, conf, font, id, color, text) {
   root.appendChild(elem_o_txt);
 };
 
-var lastData = null;
-var lastExecTime;
 function LoadDataInConfig() {
   var httpReq = new XMLHttpRequest();
   var json_data;
@@ -340,18 +338,11 @@ function LoadDataInConfig() {
   httpReq.send();
   if (httpReq.status === 200) {
     json_data = JSON.parse(httpReq.responseText);
-    if (! (! lastData)) {
-      diff_time = (Date.now() - lastExecTime) * disp_conv;
-      diff_data = {};
-      for (var item in json_data) {
-        if (lastData[item]) {
-          diff_data[item] = (json_data[item] - lastData[item]) / diff_time;
-        }
-      }
-      SetLoadData(diff_data, curExecTime);
+    var cur_data = {};
+    for (var item in json_data['traffics']) {
+      cur_data[item] = json_data['traffics'][item] / disp_conv;
     }
-    lastData = json_data;
-    lastExecTime = Date.now();
+    SetLoadData(cur_data, curExecTime);
   } else {
     console.log('LoadDataInConfig load failed. End data acquisition loop.');
     return false;
