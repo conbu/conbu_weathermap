@@ -1,0 +1,51 @@
+{
+    "config": {
+        "target": {
+            "name": "DroidKaigi 2018",
+            "maxsave": 2
+        },
+        "arrow": {
+            "width": 5,
+            "head": 7
+        },
+        "data": {
+            "url": "http://api.conbu.net/v1/traffics/all/all/both",
+            "interval": 15
+        },
+        "image": {
+            "file": "2018droidkaigi.png",
+            "width": 802,
+            "height": 1076,
+            "legend" : { "x": 275, "y": 20 },
+            "lastupdated": { "x": 275, "y": 5 }
+        },
+        "load": {
+            "conv": 1,
+            "na": "black",
+            "max": "black",
+            "unit": "%",
+            "1": "white",
+            "10": "purple",
+            "25": "blue",
+            "40": "#add8e6",
+            "55": "lime",
+            "70": "yellow",
+            "85": "orange",
+            "100": "red"
+        }
+    },
+    "link": {
+        "link0": {
+            "up":   { "x": 506, "y": 490, "name": "value-link0-up" },
+            "down": { "x": 506, "y": 625 }
+        },
+        "link1": {
+            "up":   { "x": 507, "y": 655 },
+            "down": { "x": 507, "y": 710 }
+        },
+        "link2": {
+            "up":   { "x": 509, "y": 745 },
+            "down": { "x": 509, "y": 900 }
+        }
+    }
+}
