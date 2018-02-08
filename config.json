@@ -128,7 +128,7 @@
             "down": { "x": 605, "y":  935, "name": "CONBU-SW01-FastEthernet0/47-Outgoing" }
         },
         "zabbix": {
-            "up":   { "x": 645, "y":  365, "name": "Zabbix server-eth0-Incoming" },
+            "up":   { "x": 645, "y":  370, "name": "Zabbix server-eth0-Incoming" },
             "down": { "x": 605, "y":  300, "name": "Zabbix server-eth0-Outgoing" }
         },
         "syslog": {
@@ -148,7 +148,7 @@
             "down": { "x": 435, "y":  175, "name": "18a-cc-rproxy-eth0-Outgoing" }
         },
         "resolv-mgmt": {
-            "up":   { "x": 500, "y":  220, "name": "18a-cc-resolve-dns-eth1-Incoming" },
+            "up":   { "x": 500, "y":  240, "name": "18a-cc-resolve-dns-eth1-Incoming" },
             "down": { "x": 605, "y":  270, "name": "18a-cc-resolve-dns-eth1-Outgoing" }
         },
         "resolv-ext": {
