@@ -35,17 +35,78 @@
         }
     },
     "link": {
-        "link0": {
-            "up":   { "x": 506, "y": 490, "name": "value-link0-up" },
-            "down": { "x": 506, "y": 625 }
+        "ap01": {
+            "up":   { "x": , "y": , "name": "CONBU-SW0-FastEthernet0/-Incoming" },
+            "down": { "x": , "y": , "name": "CONBU-SW0-FastEthernet0/-Outgoing" }
         },
-        "link1": {
-            "up":   { "x": 507, "y": 655 },
-            "down": { "x": 507, "y": 710 }
+        "ap02": {
+            "up":   { "x": , "y": , "name": "CONBU-SW0-FastEthernet0/-Incoming" },
+            "down": { "x": , "y": , "name": "CONBU-SW0-FastEthernet0/-Outgoing" }
         },
-        "link2": {
-            "up":   { "x": 509, "y": 745 },
-            "down": { "x": 509, "y": 900 }
+        "ap03": {
+            "up":   { "x": , "y": , "name": "CONBU-SW0-FastEthernet0/-Incoming" },
+            "down": { "x": , "y": , "name": "CONBU-SW0-FastEthernet0/-Outgoing" }
+        },
+        "ap04": {
+            "up":   { "x": , "y": , "name": "CONBU-SW0-FastEthernet0/-Incoming" },
+            "down": { "x": , "y": , "name": "CONBU-SW0-FastEthernet0/-Outgoing" }
+        },
+        "ap05": {
+            "up":   { "x": , "y": , "name": "CONBU-SW0-FastEthernet0/-Incoming" },
+            "down": { "x": , "y": , "name": "CONBU-SW0-FastEthernet0/-Outgoing" }
+        },
+        "ap06": {
+            "up":   { "x": 375, "y":  590, "name": "CONBU-SW01-FastEthernet0/05-Incoming" },
+            "down": { "x": 260, "y":  660, "name": "CONBU-SW01-FastEthernet0/05-Outgoing" }
+        },
+        "ap07": {
+            "up":   { "x": , "y": , "name": "CONBU-SW0-FastEthernet0/-Incoming" },
+            "down": { "x": , "y": , "name": "CONBU-SW0-FastEthernet0/-Outgoing" }
+        },
+        "ap08": {
+            "up":   { "x": , "y": , "name": "CONBU-SW0-FastEthernet0/-Incoming" },
+            "down": { "x": , "y": , "name": "CONBU-SW0-FastEthernet0/-Outgoing" }
+        },
+        "ap09": {
+            "up":   { "x": , "y": , "name": "CONBU-SW0-FastEthernet0/-Incoming" },
+            "down": { "x": , "y": , "name": "CONBU-SW0-FastEthernet0/-Outgoing" }
+        },
+        "ap10": {
+            "up":   { "x": , "y": , "name": "CONBU-SW0-FastEthernet0/-Incoming" },
+            "down": { "x": , "y": , "name": "CONBU-SW0-FastEthernet0/-Outgoing" }
+        },
+        "ap11": {
+            "up":   { "x": , "y": , "name": "CONBU-SW0-FastEthernet0/-Incoming" },
+            "down": { "x": , "y": , "name": "CONBU-SW0-FastEthernet0/-Outgoing" }
+        },
+        "ap12": {
+            "up":   { "x": , "y": , "name": "CONBU-SW0-FastEthernet0/-Incoming" },
+            "down": { "x": , "y": , "name": "CONBU-SW0-FastEthernet0/-Outgoing" }
+        },
+        "ap13": {
+            "up":   { "x": , "y": , "name": "CONBU-SW0-FastEthernet0/-Incoming" },
+            "down": { "x": , "y": , "name": "CONBU-SW0-FastEthernet0/-Outgoing" }
+        },
+        "ap14": {
+            "up":   { "x": , "y": , "name": "CONBU-SW0-FastEthernet0/-Incoming" },
+            "down": { "x": , "y": , "name": "CONBU-SW0-FastEthernet0/-Outgoing" }
+        },
+        "ap15": {
+            "up":   { "x": , "y": , "name": "CONBU-SW0-FastEthernet0/-Incoming" },
+            "down": { "x": , "y": , "name": "CONBU-SW0-FastEthernet0/-Outgoing" }
+        },
+        "ap16": {
+            "up":   { "x": , "y": , "name": "CONBU-SW0-FastEthernet0/-Incoming" },
+            "down": { "x": , "y": , "name": "CONBU-SW0-FastEthernet0/-Outgoing" }
+        },
+        "ap17": {
+            "up":   { "x": , "y": , "name": "CONBU-SW0-FastEthernet0/-Incoming" },
+            "down": { "x": , "y": , "name": "CONBU-SW0-FastEthernet0/-Outgoing" }
+        },
+
+        "ap": {
+            "up":   { "x": , "y": , "name": "CONBU-SW0-FastEthernet0/-Incoming" },
+            "down": { "x": , "y": , "name": "CONBU-SW0-FastEthernet0/-Outgoing" }
         }
     }
 }
