@@ -20,10 +20,10 @@
             "lastupdated": { "x": 275, "y": 5 }
         },
         "load": {
-            "conv": 1,
+            "conv": 1000000.0,
             "na": "black",
             "max": "black",
-            "unit": "%",
+            "unit": "Mbps",
             "1": "white",
             "10": "purple",
             "25": "blue",
@@ -56,8 +56,8 @@
             "down": { "x": , "y": , "name": "CONBU-SW0-FastEthernet0/-Outgoing" }
         },
         "ap06": {
-            "up":   { "x": 375, "y":  590, "name": "CONBU-SW01-FastEthernet0/05-Incoming" },
-            "down": { "x": 260, "y":  660, "name": "CONBU-SW01-FastEthernet0/05-Outgoing" }
+            "up":   { "x": 375, "y":  590, "name": "CONBU-SW01-FastEthernet0/5-Incoming" },
+            "down": { "x": 260, "y":  660, "name": "CONBU-SW01-FastEthernet0/5-Outgoing" }
         },
         "ap07": {
             "up":   { "x": , "y": , "name": "CONBU-SW0-FastEthernet0/-Incoming" },
