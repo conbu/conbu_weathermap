@@ -103,6 +103,10 @@
             "up":   { "x": 565, "y":  745, "name": "CONBU-SW05-FastEthernet0/4-Incoming" },
             "down": { "x": 690, "y":  945, "name": "CONBU-SW05-FastEthernet0/4-Outgoing" }
         },
+        "sw01": {
+            "up":   { "x": 400, "y":  570, "name": "CONBU-SW01-GigabitEthernet0/1-Incoming" },
+            "down": { "x": 400, "y":  535, "name": "CONBU-SW01-GigabitEthernet0/1-Outgoing" }
+        },
         "sw02": {
             "up":   { "x": 400, "y":  600, "name": "CONBU-SW01-GigabitEthernet0/4-Incoming" },
             "down": { "x": 245, "y":  735, "name": "CONBU-SW01-GigabitEthernet0/4-Outgoing" }
@@ -122,11 +126,6 @@
         "sw06": {
             "up":   { "x": 400, "y":  600, "name": "CONBU-SW01-FastEthernet0/47-Incoming" },
             "down": { "x": 605, "y":  935, "name": "CONBU-SW01-FastEthernet0/47-Outgoing" }
-        },
-
-        "ap": {
-            "up":   { "x": 0, "y": 0, "name": "CONBU-SW0-FastEthernet0/-Incoming" },
-            "down": { "x": 0, "y": 0, "name": "CONBU-SW0-FastEthernet0/-Outgoing" }
         }
     }
 }
