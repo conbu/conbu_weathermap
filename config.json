@@ -139,6 +139,14 @@
             "up":   { "x": 570, "y":  365, "name": "18a-cc-vwlc-Unit: 0 Slot: 0 Port: 1 Gigabit - Level 0x7030001-Incoming" },
             "down": { "x": 605, "y":  300, "name": "18a-cc-vwlc-Unit: 0 Slot: 0 Port: 1 Gigabit - Level 0x7030001-Outgoing" }
         },
+        "resolv-mgmt": {
+            "up":   { "x": 595, "y":  245, "name": "18a-cc-resolve-dns-eth1-Incoming" },
+            "down": { "x": 605, "y":  270, "name": "18a-cc-resolve-dns-eth1-Outgoing" }
+        },
+        "resolv-ext": {
+            "up":   { "x": 575, "y":  235, "name": "18a-cc-resolve-dns-eth0-Incoming" },
+            "down": { "x": 435, "y":  175, "name": "18a-cc-resolve-dns-eth0-Outgoing" }
+        },
 
         "x": {
             "up":   { "x": 0, "y":  60, "name": "CONBU-SW01-FastEthernet0/47-Incoming" },
