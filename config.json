@@ -154,11 +154,6 @@
         "resolv-ext": {
             "up":   { "x": 480, "y":  220, "name": "18a-cc-resolve-dns-eth0-Incoming" },
             "down": { "x": 435, "y":  175, "name": "18a-cc-resolve-dns-eth0-Outgoing" }
-        },
-
-        "x": {
-            "up":   { "x": 0, "y":  60, "name": "CONBU-SW01-FastEthernet0/47-Incoming" },
-            "down": { "x": 5, "y":  95, "name": "CONBU-SW01-FastEthernet0/47-Outgoing" }
         }
     }
 }
