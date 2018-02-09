@@ -22,16 +22,16 @@
         "load": {
             "conv": 1000000.0,
             "na": "black",
-            "max": "black",
+            "max": "magenta",
             "unit": "Mbps",
             "1": "white",
-            "10": "purple",
-            "25": "blue",
-            "40": "#add8e6",
-            "55": "lime",
-            "70": "yellow",
-            "85": "orange",
-            "100": "red"
+            "5": "purple",
+            "10": "blue",
+            "15": "#add8e6",
+            "30": "lime",
+            "50": "yellow",
+            "100": "orange",
+            "200": "red"
         }
     },
     "link": {
