@@ -1,0 +1,39 @@
+{
+    "config": {
+        "target": {
+            "name": "Erlang & Elixir Fest 2018",
+            "maxsave": 1
+        },
+        "arrow": {
+            "width": 5,
+            "head": 7
+        },
+        "data": {
+            "url": "http://api.conbu.net/v1/traffices/all/all/both",
+            "interval": 15
+        },
+        "image": {
+            "file": "conbu_elixirfes2018.png",
+            "width": 1000,
+            "height": 1000,
+            "legend" : { "x": 500, "y": 500 },
+            "lastupdated": { "x": 500, "y": 490 }
+        },
+        "load": {
+            "conv": 1,
+            "na": "black",
+            "max": "black",
+            "unit": "%",
+            "1": "white",
+            "10": "purple",
+            "25": "blue",
+            "40": "#add8e6",
+            "55": "lime",
+            "70": "yellow",
+            "85": "orange",
+            "100": "red"
+        }
+    },
+    "link": {
+    }
+}
