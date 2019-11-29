@@ -1,7 +1,7 @@
 {
     "config": {
         "target": {
-            "name": "DroidKaigi 2016",
+            "name": "PHP Conference 2019",
             "maxsave": 2
         },
         "arrow": {
@@ -13,7 +13,7 @@
             "interval": 60
         },
         "image": {
-            "file": "conbu_elixirconf2017.png",
+            "file": "conbu_phpcon2019.png",
             "width": 1008,
             "height": 1344,
             "legend" : { "x": 275, "y": 125 },
