@@ -1,7 +1,7 @@
 {
     "config": {
         "target": {
-            "name": "DroidKaigi 2016",
+            "name": "PHPerKaigi 2016",
             "maxsave": 2
         },
         "arrow": {
@@ -13,11 +13,11 @@
             "interval": 60
         },
         "image": {
-            "file": "conbu_elixirconf2017.png",
-            "width": 1008,
-            "height": 1344,
-            "legend" : { "x": 275, "y": 125 },
-            "lastupdated": { "x": 275, "y": 110 }
+            "file": "PHPerKaigi-2020.png",
+            "width": 960,
+            "height": 720,
+            "legend" : { "x": 10, "y": 230 },
+            "lastupdated": { "x": 10, "y": 215 }
         },
         "load": {
             "conv": 1,
