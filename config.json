@@ -16,8 +16,8 @@
             "file": "PHPerKaigi-2020.png",
             "width": 960,
             "height": 720,
-            "legend" : { "x": 10, "y": 230 },
-            "lastupdated": { "x": 10, "y": 215 }
+            "legend" : { "x": 10, "y": 500 },
+            "lastupdated": { "x": 10, "y": 485 }
         },
         "load": {
             "conv": 1,
