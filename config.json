@@ -16,8 +16,8 @@
             "file": "PHPerKaigi-2020.png",
             "width": 960,
             "height": 720,
-            "legend" : { "x": 10, "y": 500 },
-            "lastupdated": { "x": 10, "y": 485 }
+            "legend" : { "x": 10, "y": 480 },
+            "lastupdated": { "x": 10, "y": 465 }
         },
         "load": {
             "conv": 1,
@@ -36,91 +36,87 @@
     },
     "link": {
         "lte1": {
-            "up":   { "x": 305, "y": 115, "name": "SW-Incoming" },
-            "down": { "x": 385, "y": 195, "name": "SW-Outgoing" }
-        },
-        "lte2": {
-            "up":   { "x": 305, "y": 200, "name": "SW-Incoming" },
-            "down": { "x": 385, "y": 200, "name": "SW-Outgoing" }
-        },
-        "lte3": {
-            "up":   { "x": 305, "y": 290, "name": "SW-Incoming" },
+            "up":   { "x": 310, "y": 125, "name": "SW-Incoming" },
             "down": { "x": 385, "y": 205, "name": "SW-Outgoing" }
         },
+        "lte2": {
+            "up":   { "x": 310, "y": 210, "name": "SW-Incoming" },
+            "down": { "x": 385, "y": 210, "name": "SW-Outgoing" }
+        },
+        "lte3": {
+            "up":   { "x": 310, "y": 295, "name": "SW-Incoming" },
+            "down": { "x": 385, "y": 215, "name": "SW-Outgoing" }
+        },
         "lte4": {
-            "up":   { "x": 665, "y": 190, "name": "SW-Incoming" },
+            "up":   { "x": 665, "y": 200, "name": "SW-Incoming" },
             "down": { "x": 570, "y":  70, "name": "SW-Outgoing" }
         },
         "lte5": {
-            "up":   { "x": 665, "y": 195, "name": "SW-Incoming" },
-            "down": { "x": 570, "y": 160, "name": "SW-Outgoing" }
+            "up":   { "x": 665, "y": 205, "name": "SW-Incoming" },
+            "down": { "x": 570, "y": 155, "name": "SW-Outgoing" }
         },
         "sw-L-I": {
-            "up":   { "x": 425, "y": 230, "name": "SW-Incoming" },
-            "down": { "x": 265, "y": 490, "name": "SW-Outgoing" }
+            "up":   { "x": 430, "y": 235, "name": "SW-Incoming" },
+            "down": { "x": 265, "y": 505, "name": "SW-Outgoing" }
         },
         "sw-L-B": {
-            "up":   { "x": 480, "y": 200, "name": "SW-Incoming" },
-            "down": { "x": 665, "y": 200, "name": "SW-Outgoing" }
+            "up":   { "x": 480, "y": 210, "name": "SW-Incoming" },
+            "down": { "x": 665, "y": 210, "name": "SW-Outgoing" }
         },
         "sw-B-A": {
-            "up":   { "x": 710, "y": 230, "name": "SW-Incoming" },
-            "down": { "x": 710, "y": 490, "name": "SW-Outgoing" }
+            "up":   { "x": 710, "y": 240, "name": "SW-Incoming" },
+            "down": { "x": 710, "y": 500, "name": "SW-Outgoing" }
         },
         "apL1": {
             "up":   { "x": 430, "y": 230, "name": "SW-Incoming" },
-            "down": { "x": 450, "y": 290, "name": "SW-Outgoing" }
+            "down": { "x": 455, "y": 290, "name": "SW-Outgoing" }
         },
         "apL2": {
-            "up":   { "x": 705, "y": 230, "name": "SW-Incoming" },
+            "up":   { "x": 705, "y": 240, "name": "SW-Incoming" },
             "down": { "x": 540, "y": 290, "name": "SW-Outgoing" }
         },
         "apB1": {
-            "up":   { "x": 755, "y": 195, "name": "SW-Incoming" },
-            "down": { "x": 845, "y": 115, "name": "SW-Outgoing" }
+            "up":   { "x": 755, "y": 205, "name": "SW-Incoming" },
+            "down": { "x": 845, "y": 165, "name": "SW-Outgoing" }
         },
         "apB2": {
-            "up":   { "x": 755, "y": 200, "name": "SW-Incoming" },
-            "down": { "x": 845, "y": 200, "name": "SW-Outgoing" }
-        },
-        "apB3": {
-            "up":   { "x": 755, "y": 205, "name": "SW-Incoming" },
-            "down": { "x": 845, "y": 285, "name": "SW-Outgoing" }
+            "up":   { "x": 755, "y": 210, "name": "SW-Incoming" },
+            "down": { "x": 845, "y": 255, "name": "SW-Outgoing" }
         },
         "apA1": {
-            "up":   { "x": 755, "y": 520, "name": "SW-Incoming" },
-            "down": { "x": 850, "y": 495, "name": "SW-Outgoing" }
+            "up":   { "x": 755, "y": 525, "name": "SW-Incoming" },
+            "down": { "x": 850, "y": 490, "name": "SW-Outgoing" }
         },
         "apA2": {
-            "up":   { "x": 720, "y": 545, "name": "SW-Incoming" },
-            "down": { "x": 850, "y": 585, "name": "SW-Outgoing" }
+            "up":   { "x": 755, "y": 530, "name": "SW-Incoming" },
+            "down": { "x": 850, "y": 580, "name": "SW-Outgoing" }
         },
         "apA3": {
-            "up":   { "x": 700, "y": 545, "name": "SW-Incoming" },
-            "down": { "x": 525, "y": 630, "name": "SW-Outgoing" }
+            "up":   { "x": 710, "y": 555, "name": "SW-Incoming" },
+            "down": { "x": 795, "y": 630, "name": "SW-Outgoing" }
         },
         "apA4": {
-            "up":   { "x": 705, "y": 545, "name": "SW-Incoming" },
-            "down": { "x": 620, "y": 630, "name": "SW-Outgoing" }
+            "up":   { "x": 705, "y": 555, "name": "SW-Incoming" },
+            "down": { "x": 625, "y": 630, "name": "SW-Outgoing" }
         },
         "apA5": {
-            "up":   { "x": 710, "y": 545, "name": "SW-Incoming" },
-            "down": { "x": 710, "y": 630, "name": "SW-Outgoing" }
+            "up":   { "x": 665, "y": 530, "name": "SW-Incoming" },
+            "down": { "x": 570, "y": 580, "name": "SW-Outgoing" }
         },
         "apA6": {
-            "up":   { "x": 715, "y": 545, "name": "SW-Incoming" },
-            "down": { "x": 800, "y": 630, "name": "SW-Outgoing" }
+            "up":   { "x": 665, "y": 525, "name": "SW-Incoming" },
+            "down": { "x": 570, "y": 490, "name": "SW-Outgoing" }
         },
         "apI1": {
-            "up":   { "x": 260, "y": 550, "name": "SW-Incoming" },
+            "up":   { "x": 260, "y": 560, "name": "SW-Incoming" },
             "down": { "x": 170, "y": 630, "name": "SW-Outgoing" }
         },
         "apI2": {
-            "up":   { "x": 265, "y": 550, "name": "SW-Incoming" },
+            "up":   { "x": 265, "y": 560, "name": "SW-Incoming" },
             "down": { "x": 265, "y": 630, "name": "SW-Outgoing" }
         },
         "apI3": {
-            "up":   { "x": 270, "y": 550, "name": "SW-Incoming" },
+            "up":   { "x": 270, "y": 560, "name": "SW-Incoming" },
             "down": { "x": 360, "y": 630, "name": "SW-Outgoing" }
         }
     }
